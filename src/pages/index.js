@@ -29,17 +29,21 @@ const IndexPage = ({ data }) => {
 
 export const pageQuery = graphql`
   query allBlogPosts {
-    allMarkdownRemark(limit: 10) {
+    allMarkdownRemark(
+      limit: 10
+      filter: { frontmatter: { published: { eq: true } } }
+    ) {
       edges {
         node {
           id
           frontmatter {
             title
             path
+            published
           }
         }
       }
-    }
+    }  
   }
 `
 
