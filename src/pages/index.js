@@ -31,6 +31,7 @@ export const pageQuery = graphql`
   query allBlogPosts {
     allMarkdownRemark(
       limit: 10
+      sort: { fields: [frontmatter___date], order: DESC}
       filter: { frontmatter: { published: { eq: true } } }
     ) {
       edges {
@@ -43,7 +44,7 @@ export const pageQuery = graphql`
           }
         }
       }
-    }  
+    }
   }
 `
 
